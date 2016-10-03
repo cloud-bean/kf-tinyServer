@@ -1,0 +1,26 @@
+module.exports = {
+  port: process.env.KEEP_PORT || 3000,
+  db: process.env.KEEP_DB_URI || 'mongodb://localhost/keepreading',
+  baseServer:{
+    baseRoute:'http://120.25.227.156:7000/',
+    authRoute:"oauth/token/",
+    userRoute:"api/base/users/",
+  },
+  oauth:{
+    client_id: "kf-app",
+    client_secret: "prometheus",
+    grant_type: 'password',
+  },
+  wechatConfig: {
+    token: 'helloworld',
+    appid: 'wxb3762a929cf9e070',
+    appsecret: '0a607b7dc2ff4fa027b8594a99f9e086',
+    appid_test: 'wxf8e294c011cd47e1',
+    appsecret_test: '729b99cfef8f39ec492f4fbaf3576b72',
+    encodingAESKey: 'e4miuSxQNBIAFYuyi5ky0m1R79oV950ijnjKOtPSXYG',
+  },
+  logic: {
+    delayTime: 10000,
+  },
+};
+// db: 'mongodb://lightclass:lightclass@120.25.227.156:29017/lightclass',

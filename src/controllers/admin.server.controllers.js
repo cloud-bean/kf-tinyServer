@@ -2,7 +2,6 @@ const getErrorMessage = require('./core/errors.server.controllers').getErrorMess
 
 
 const path = require('path');
-const wechatAPI = require('../config/wechatAPI').api;
 const webapi = require('../config/wechatAPI').webapi;
 const request = require('superagent');
 const config = require('../config/config');
@@ -17,7 +16,6 @@ function login(req, res) {
       const username = req.body.username;
       const password = req.body.password;
       const token = yield authBaseServer(username,password);
-      console.log(token.body);
       res.send(token.body);
     } catch (err) {
       console.log(err);
@@ -29,8 +27,8 @@ function wechat(req, res) {
   co(function * () {
     try {
       const openid = yield getUserOpenIdByWeb(req.query.code);
-      //const user = yield getUserInfoByOpenId(openid);
-      res.json({openid});
+      const user = yield getUserInfoByOpenId(openid);
+      res.json({user});
     } catch (err) {
       console.log(err);
     }
@@ -44,30 +42,16 @@ function getUserOpenIdByWeb(code) {
       // var accessToken = result.data.access_token;
       // var openid = result.data.openid;
     });
+   
   });
 }
 // 当接收到用户发来的消息时，判断数据库中是否有用户信息，若无，则根据openid从微信服务器获取
 function getUserInfoByOpenId(openid) {
   return new Promise((resolve, reject) => {
-    // 从大后端查询openid
-    
-    // User.find({ openid }).exec()
-    // .then((users) => {
-    //   if (users.length === 0) {
-    //     wechatAPI.getUser(openid, (err, userInfo) => {
-    //       const user = new User(userInfo);
-    //       user.save(err1 => {
-    //         if (err1) reject(err1);
-    //         resolve(user);
-    //       });
-    //     });
-    //   } else {
-    //     resolve(users[0]);
-    //   }
-    // })
-    // .catch(err => {
-    //   reject(err);
-    // });
+     webapi.getUser(openid, function (err, result) {
+       if(err)reject(err);
+       resolve(result);
+    });
   });
 }
 

@@ -71,5 +71,4 @@ function handleText(message, req, res, next) {
 
 module.exports = {
   handleText,
-
 };

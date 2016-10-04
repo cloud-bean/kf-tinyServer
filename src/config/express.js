@@ -26,7 +26,7 @@ module.exports = () => {
     }
   });
 
-  // app.use('/wechat', wechatRoute);
+  app.use('/wechat', wechatRoute);
   app.use('/admin',  adminRoute);
   // app.use('/frontend', frontendRoute);
 

@@ -25,12 +25,12 @@ function login(req, res) {
   });
 }
 
-function wehcat(req, res) {
+function wechat(req, res) {
   co(function * () {
     try {
       const openid = yield getUserOpenIdByWeb(req.query.code);
-      const user = yield getUserInfoByOpenId(openid);
-      res.json({user });
+      //const user = yield getUserInfoByOpenId(openid);
+      res.json({openid});
     } catch (err) {
       console.log(err);
     }
@@ -180,4 +180,5 @@ function authBaseServer(username,password) {
 
 module.exports = {
   login,
+  wechat
 };

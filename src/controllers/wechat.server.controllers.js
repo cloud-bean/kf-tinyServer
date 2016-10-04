@@ -23,12 +23,13 @@
 //       res.reply('没匹配上啦啦');
 //   }
 // }
-// // function handleText(message, req, res, next) {
-// //   // wechatAPI.sendText(message.FromUserName, 'Hello world', (err, result) => {
-// //   //   console.log(result);
-// //   // });
-// //   res.reply2CustomerService(message.ToUserName, message.FromUserName);
-// // }
+function handleText(message, req, res, next) {
+  // wechatAPI.sendText(message.FromUserName, 'Hello world', (err, result) => {
+  //   console.log(result);
+  // });
+  console.log('ddd');
+  res.reply('hello');
+}
 
 // function handleEvent(message, req, res, next) {
 //   switch (message.Event) {
@@ -68,8 +69,7 @@
 // }
 
 
-// module.exports = {
-//   handleEvent,
-//   handleVoice,
-//   handleImage,
-// };
+module.exports = {
+  handleText,
+
+};

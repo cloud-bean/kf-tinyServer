@@ -28,7 +28,11 @@ function wechat(req, res) {
     try {
       const openid = yield getUserOpenIdByWeb(req.query.code);
       const user = yield getUserInfoByOpenId(openid);
-      res.json({user});
+      const res = yield authBaseServer(user);
+
+      console.log(res.body);
+
+
     } catch (err) {
       console.log(err);
     }
@@ -37,12 +41,12 @@ function wechat(req, res) {
 function getUserOpenIdByWeb(code) {
   return new Promise((resolve, reject) => {
     webapi.getAccessToken(code, (err, result) => {
-      if (err) reject(err);
+      if (err)reject(err);
       resolve(result.data.openid);
       // var accessToken = result.data.access_token;
       // var openid = result.data.openid;
     });
-   
+
   });
 }
 // 当接收到用户发来的消息时，判断数据库中是否有用户信息，若无，则根据openid从微信服务器获取
@@ -55,20 +59,19 @@ function getUserInfoByOpenId(openid) {
   });
 }
 
-function authBaseServer(username,password) {
+function authBaseServer(user) {
   return new Promise((resolve, reject) => {
     request
     .post(config.baseServer.baseRoute+config.baseServer.authRoute)
     .send({
-        username,
-        password,
+        providerData: user,
         client_id: "kf-app",
         client_secret: "prometheus",
         grant_type: 'password',
     })
     .then((res) => {
       resolve(res);
-    }) 
+    })
     .catch((err) => {
       reject(err);
     });

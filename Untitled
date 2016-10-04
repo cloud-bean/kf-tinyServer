@@ -14,4 +14,4 @@ https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb3762a929cf9e070&red
 https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxf8e294c011cd47e1&redirect_uri=http%3A%2F%2Fxinnix.ngrok.cc%2Fadmin%2Fwechat&response_type=code&scope=snsapi_base&state=hehe#wechat_redirect
 
 
-https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxf8e294c011cd47e1&redirect_uri=http%3A%2F%2Fxinnix.ngrok.cc%2Fadmin%2Fwechat&response_type=code&scope=snsapi_userinfo&state=hehe#wechat_redirect
+https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxf8e294c011cd47e1&redirect_uri=http%3A%2F%2Fxinnix.hk1.ngrok.cc%2Fadmin%2Fwechat&response_type=code&scope=snsapi_userinfo&state=hehe#wechat_redirect

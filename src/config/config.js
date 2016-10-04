@@ -3,7 +3,7 @@ module.exports = {
   db: process.env.KEEP_DB_URI || 'mongodb://localhost/keepreading',
   baseServer:{
     baseRoute:'http://120.25.227.156:7000/',
-    authRoute:"oauth/token/",
+    authRoute:"oauth/wechat/token",
     userRoute:"api/base/users/",
   },
   oauth:{

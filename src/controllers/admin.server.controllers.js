@@ -10,6 +10,10 @@ const fs = require('fs');
 const co = require('co');
 const userHelper = require('../helper/userHelper.server');
 
+function test(req,res){
+  res.send('ok');
+}
+
 function login(req, res) {
   co(function *(){
     try {
@@ -164,5 +168,6 @@ function authBaseServer(user) {
 
 module.exports = {
   login,
-  wechat
+  wechat,
+  test,
 };

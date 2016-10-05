@@ -3,7 +3,8 @@ const express = require('express');
 
 
 const router = express.Router();
-
+router.route('/')
+  .get(admin.test);
 router.route('/login')
     .post(admin.login);
 

@@ -32,8 +32,8 @@ function wechat(req, res) {
     try {
       const openid = yield getUserOpenIdByWeb(req.query.code);
       const user = yield getUserInfoByOpenId(openid);
-      const res = yield authBaseServer(user);
-      res.send(res.body);
+      const result = yield authBaseServer(user);
+      res.send(result.body);
     } catch (err) {
       console.log(err);
     }

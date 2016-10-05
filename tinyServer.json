@@ -2,7 +2,7 @@
     "apps": [{
         "script": "index.js",
         "name": "tinyServer",
-        "watch": false,
+        "watch": true,
         "env_production": {
           "NODE_ENV": "production",
           "KEEP_PORT": 5555,

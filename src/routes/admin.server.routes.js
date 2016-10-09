@@ -6,8 +6,6 @@ const router = express.Router();
 
 router.route('/')
   .get(admin.test);
-router.route('/signup')
-    .post(admin.signup);
 
 router.route('/auth')
     .get(admin.auth);

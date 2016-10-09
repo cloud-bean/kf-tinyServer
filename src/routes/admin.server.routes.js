@@ -3,12 +3,13 @@ const express = require('express');
 
 
 const router = express.Router();
+
 router.route('/')
   .get(admin.test);
-// router.route('/login')
-//     .post(admin.login);
+router.route('/signup')
+    .post(admin.signup);
 
-router.route('/wechat')
-    .get(admin.wechat);
+router.route('/auth')
+    .get(admin.auth);
 
 module.exports = router;

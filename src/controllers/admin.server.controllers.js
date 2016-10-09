@@ -26,6 +26,13 @@ function test(req, res) {
 //     }
 //   });
 // }
+// function signUp(req, res) {
+//   const accessToken = req.body.access_token;
+//   const userId = req.body.user_id;
+//   const user
+//
+// }
+
 function getUserOpenIdByWeb(code) {
   return new Promise((resolve, reject) => {
     webapi.getAccessToken(code, (err, result) => {
@@ -65,14 +72,14 @@ function authBaseServer(user) {
   });
 }
 
-function wechat(req, res) {
+function auth(req, res) {
   co(function * () {
     try {
       const openid = yield getUserOpenIdByWeb(req.query.code);
       const user = yield getUserInfoByOpenId(openid);
       const result = yield authBaseServer(user);
       console.log(result.body.data);
-      res.render('./signup', { baseinfo: result.body.data, user });
+      res.json({ accessToken: result.body.data.access_token, userid: result.body.data.user });
     } catch (err) {
       console.log(err);
     }
@@ -165,6 +172,7 @@ function wechat(req, res) {
 // }
 module.exports = {
   // login,
-  wechat,
+  auth,
   test,
+  // signUp,
 };

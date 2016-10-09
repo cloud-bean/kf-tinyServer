@@ -10,8 +10,8 @@ const config = require('../config/config');
 const co = require('co');
 // const userHelper = require('../helper/userHelper.server');
 
-function test(req, res) {
-  res.send('ok');
+function index(req, res) {
+  res.render('./index');
 }
 
 // function login(req, res) {
@@ -173,6 +173,6 @@ function auth(req, res) {
 module.exports = {
   // login,
   auth,
-  test,
+  index,
   // signUp,
 };

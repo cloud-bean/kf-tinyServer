@@ -8,9 +8,9 @@ const swig = require('swig');
 
 module.exports = () => {
   const app = express();
-  app.engine('html', swig.renderFile);
-  app.set('view engine', 'html');
-  app.set('views', './src/views');
+  // app.engine('html', swig.renderFile);
+  // app.set('view engine', 'html');
+  // app.set('views', './dist');
   app.use(bodyParser.urlencoded({
     extended: true,
   }));

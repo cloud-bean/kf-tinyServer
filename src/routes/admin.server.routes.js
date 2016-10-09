@@ -5,7 +5,7 @@ const express = require('express');
 const router = express.Router();
 
 router.route('/')
-  .get(admin.test);
+  .get(admin.index);
 
 router.route('/auth')
     .get(admin.auth);

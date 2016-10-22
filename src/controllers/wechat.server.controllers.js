@@ -27,7 +27,6 @@ function handleText(message, req, res, next) {
   // wechatAPI.sendText(message.FromUserName, 'Hello world', (err, result) => {
   //   console.log(result);
   // });
-  console.log('ddd');
   res.reply('hello');
 }
 

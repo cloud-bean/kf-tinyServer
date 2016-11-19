@@ -5,7 +5,7 @@
 const webapi = require('../config/wechatAPI').webapi;
 const request = require('superagent');
 const config = require('../config/config');
-
+const api = require('../config/wechatAPI').api;
 // const fs = require('fs');
 const co = require('co');
 // const userHelper = require('../helper/userHelper.server');
@@ -86,9 +86,26 @@ function auth(req, res) {
   });
 }
 
+function getJssdkConfig(req, res) {
+  const url = req.body.url;
+  var param = {
+    debug: false,
+    jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage'],
+    url,
+  };
+  api.getJsConfig(param, (err, result) => {
+    if(err){
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+}
+
 module.exports = {
   // login,
   auth,
   index,
+  getJssdkConfig,
   // signUp,
 };

@@ -89,7 +89,7 @@ function auth(req, res) {
 function getJssdkConfig(req, res) {
   const url = req.body.url;
   var param = {
-    debug: false,
+    debug: true,
     jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage'],
     url,
   };
@@ -97,6 +97,7 @@ function getJssdkConfig(req, res) {
     if(err){
       console.log(err);
     } else {
+      console.log(result);
       res.send(result);
     }
   });

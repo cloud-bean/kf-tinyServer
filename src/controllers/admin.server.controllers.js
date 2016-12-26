@@ -89,7 +89,7 @@ function auth(req, res) {
 function getJssdkConfig(req, res) {
   const url = req.body.url;
   var param = {
-    debug: false,
+    debug: true,
     jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage'],
     url,
   };

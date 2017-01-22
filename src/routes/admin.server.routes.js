@@ -10,4 +10,7 @@ router.route('/')
 router.route('/auth')
     .get(admin.auth);
 
+router.route('/jssdk')
+    .post(admin.getJssdkConfig);
+
 module.exports = router;

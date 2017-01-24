@@ -90,10 +90,23 @@ function getJssdkConfig(req, res) {
   const url = req.body.url;
   var param = {
     debug: false,
-    jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage'],
+    jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage','chooseImage','previewImage','uploadImage','downloadImage','startRecord'],
     url,
   };
   api.getJsConfig(param, (err, result) => {
+    if(err){
+      console.log(err);
+    } else {
+      console.log(result);
+      res.send(result);
+    }
+  });
+}
+
+function sendTemplate(req, res) {
+  var content = req.body;
+  console.log('content',content);
+  api.sendTemplate(content.openId, content.templateId, content.url, content.data, (err, result) => {
     if(err){
       console.log(err);
     } else {
@@ -108,5 +121,6 @@ module.exports = {
   auth,
   index,
   getJssdkConfig,
+  sendTemplate,
   // signUp,
 };

@@ -5,12 +5,15 @@ const express = require('express');
 const router = express.Router();
 
 router.route('/')
-  .get(admin.index);
+.get(admin.index);
 
 router.route('/auth')
-    .get(admin.auth);
+.get(admin.auth);
 
 router.route('/jssdk')
-    .post(admin.getJssdkConfig);
+.post(admin.getJssdkConfig);
+
+router.route('/template')
+.post(admin.sendTemplate);
 
 module.exports = router;

@@ -16,4 +16,7 @@ router.route('/jssdk')
 router.route('/template')
 .post(admin.sendTemplate);
 
+router.route('/uploadImage')
+.post(admin.uploadImage2Qn);
+
 module.exports = router;

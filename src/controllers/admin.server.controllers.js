@@ -116,11 +116,25 @@ function sendTemplate(req, res) {
   });
 }
 
+function uploadImage2Qn(req,res) {
+  var media_id = req.body.media_id;
+  api.getMedia(media_id, (err, result, res) => {
+    if(err){
+      console.log(err);
+    } else {
+      console.log(result);
+      res.send(result);
+    }
+  });
+
+}
+
 module.exports = {
   // login,
   auth,
   index,
   getJssdkConfig,
   sendTemplate,
+  uploadImage2Qn,
   // signUp,
 };

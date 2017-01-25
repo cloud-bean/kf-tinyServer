@@ -2,6 +2,11 @@ const config = require('./config');
 // const fs = require('fs');
 const WechatAPI = require('wechat-api');
 const OAuth = require('wechat-oauth');
+var qiniu = require("qiniu");
+
+//需要填写你的 Access Key 和 Secret Key
+qiniu.conf.ACCESS_KEY = 'yH-npgsHSAiumj2uWD4ssIPEdRta5HEsRUCLNFl2';
+qiniu.conf.SECRET_KEY = 'g-OqPh0BU3NJTV-52iJbeblrUYLPty0XIfmRuBG9';
 
 let appid = config.wechatConfig.appid_test;
 let appsecret = config.wechatConfig.appsecret_test;
@@ -30,4 +35,5 @@ const api = new WechatAPI(appid, appsecret);
 module.exports = {
   api,
   webapi,
+  qiniu
 };

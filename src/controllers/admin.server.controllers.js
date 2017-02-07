@@ -90,7 +90,7 @@ function getJssdkConfig(req, res) {
   const url = req.body.url;
   var param = {
     debug: false,
-    jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage','chooseImage','previewImage','uploadImage','downloadImage','startRecord'],
+    jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage','chooseImage','previewImage','uploadImage','downloadImage','startRecord','stopRecord'],
     url,
   };
   api.getJsConfig(param, (err, result) => {
@@ -105,7 +105,7 @@ function getJssdkConfig(req, res) {
 
 function sendTemplate(req, res) {
   var content = req.body;
-  console.log('content',content);
+  console.log('templete content',content);
   api.sendTemplate(content.openId, content.templateId, content.url, content.data, (err, result) => {
     if(err){
       console.log(err);

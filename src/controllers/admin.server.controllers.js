@@ -36,7 +36,10 @@ function index(req, res) {
 function getUserOpenIdByWeb(code) {
   return new Promise((resolve, reject) => {
     webapi.getAccessToken(code, (err, result) => {
-      if (err)reject(err);
+      if (err){
+        console.log(err);
+        reject(err);
+      }
       resolve(result.data.openid);
       // var accessToken = result.data.access_token;
       // var openid = result.data.openid;

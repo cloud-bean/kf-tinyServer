@@ -2,7 +2,8 @@ const config = require('./config');
 // const fs = require('fs');
 const WechatAPI = require('wechat-api');
 const OAuth = require('wechat-oauth');
-var qiniu = require("qiniu");
+const qiniu = require("qiniu");
+const fs = require('fs');
 
 //需要填写你的 Access Key 和 Secret Key
 qiniu.conf.ACCESS_KEY = 'yH-npgsHSAiumj2uWD4ssIPEdRta5HEsRUCLNFl2';
@@ -20,6 +21,7 @@ const webapi = new OAuth(appid, appsecret);
 // const api = new WechatAPI(appid, appsecret);
 const api = new WechatAPI(appid, appsecret, function (callback) {
   // 传入一个获取全局token的方法
+  console.log('read!!');
   fs.readFile('access_token.txt', 'utf8', function (err, txt) {
     if (err) {return callback(err);}
     callback(null, JSON.parse(txt));
@@ -27,6 +29,7 @@ const api = new WechatAPI(appid, appsecret, function (callback) {
 }, function (token, callback) {
   // 请将token存储到全局，跨进程、跨机器级别的全局，比如写到数据库、redis等
   // 这样才能在cluster模式及多机情况下使用，以下为写入到文件的示例
+  console.log('write!!');
   fs.writeFile('access_token.txt', JSON.stringify(token), callback);
 });
 

@@ -81,7 +81,6 @@ function auth(req, res) {
       const openid = yield getUserOpenIdByWeb(req.query.code);
       const user = yield getUserInfoByOpenId(openid);
       const result = yield authBaseServer(user);
-      console.log(result.body.data);
       res.json({ accessToken: result.body.data.access_token, userid: result.body.data.user_id });
     } catch (err) {
       console.log(err);

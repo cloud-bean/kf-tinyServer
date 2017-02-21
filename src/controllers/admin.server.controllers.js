@@ -96,16 +96,12 @@ function getJssdkConfig(req, res) {
     jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage','chooseImage','previewImage','uploadImage','downloadImage','startRecord','stopRecord'],
     url,
   };
-  if(cache.get('js_ticket')){
-    res.send(cache.get('js_ticket'));
-    return;
-  }
+
   api.getJsConfig(param, (err, result) => {
     if(err){
       console.log(err);
     } else {
       console.log('js_ticket:',result);
-      cache.put('js_ticket',result,7100000);
       res.send(result);
     }
   });

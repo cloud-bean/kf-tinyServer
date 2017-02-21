@@ -20,6 +20,7 @@
     "express": "^4.0.0",
     "jimp": "^0.2.24",
     "lodash": "^4.6.0",
+    "memory-cache": "^0.1.6",
     "moment": "^2.13.0",
     "mongoose": "^4.4.5",
     "node-fetch": "^1.6.3",

@@ -9,6 +9,7 @@ const api = require('../config/wechatAPI').api;
 // const fs = require('fs');
 const co = require('co');
 // const userHelper = require('../helper/userHelper.server');
+const cache = require('memory-cache');
 
 function index(req, res) {
   res.render('./index');
@@ -95,11 +96,16 @@ function getJssdkConfig(req, res) {
     jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage','chooseImage','previewImage','uploadImage','downloadImage','startRecord','stopRecord'],
     url,
   };
+  if(cache.get('js_ticket')){
+    res.send(cache.get('js_ticket'));
+    return;
+  }
   api.getJsConfig(param, (err, result) => {
     if(err){
       console.log(err);
     } else {
-      console.log(result);
+      console.log('js_ticket:',result);
+      cache.put('js_ticket',result,7100);
       res.send(result);
     }
   });

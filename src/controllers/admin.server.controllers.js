@@ -105,7 +105,7 @@ function getJssdkConfig(req, res) {
       console.log(err);
     } else {
       console.log('js_ticket:',result);
-      cache.put('js_ticket',result,7100);
+      cache.put('js_ticket',result,7100000);
       res.send(result);
     }
   });

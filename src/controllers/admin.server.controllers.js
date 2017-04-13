@@ -93,7 +93,7 @@ function getJssdkConfig(req, res) {
     const url = req.body.url;
     var param = {
         debug: false,
-        jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'chooseImage', 'previewImage', 'uploadImage', 'downloadImage', 'startRecord', 'stopRecord', 'getLocalImgData', 'playVoice', 'uploadVoice', 'onVoicePlayEnd', 'onVoiceRecordEnd'],
+        jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'chooseImage', 'previewImage', 'uploadImage', 'downloadImage', 'startRecord', 'stopRecord', 'getLocalImgData', 'playVoice', 'uploadVoice', 'onVoicePlayEnd', 'onVoiceRecordEnd', 'downloadVoice'],
         url,
     };
 

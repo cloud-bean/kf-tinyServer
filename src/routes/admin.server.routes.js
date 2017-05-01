@@ -10,6 +10,9 @@ router.route('/')
 router.route('/auth')
 .get(admin.auth);
 
+router.route('/authLocal')
+.get(admin.authLocal);
+
 router.route('/jssdk')
 .post(admin.getJssdkConfig);
 

@@ -152,5 +152,6 @@ module.exports = {
     getJssdkConfig,
     sendTemplate,
     uploadImage2Qn,
+    authLocal,
     // signUp,
 };

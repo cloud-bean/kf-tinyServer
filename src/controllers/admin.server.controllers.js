@@ -92,9 +92,7 @@ function auth(req, res) {
 function authLocal(req, res) {
     co(function*() {
         try {
-            console.log('start auth local');
-            const user = yield getUserInfoByOpenId(req.query.openid);
-            console.log('start auth local 20%', user);
+            const user = { openid: req.query.openid };
             const result = yield authBaseServer(user);
             res.json({ accessToken: result.body.data.access_token, userid: result.body.data.user_id });
         } catch (err) {

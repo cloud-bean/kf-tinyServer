@@ -90,15 +90,15 @@ function auth(req, res) {
 }
 
 function authLocal(req, res) {
-  co(function * () {
-    try {
-      const user = yield getUserInfoByOpenId(req.query.openid);
-      const result = yield authBaseServer(user);
-      res.json({ accessToken: result.body.data.access_token, userid: result.body.data.user_id });
-    } catch (err) {
-      console.log(err);
-    }
-  });
+    co(function*() {
+        try {
+            const user = { openid: req.query.openid };
+            const result = yield authBaseServer(user);
+            res.json({ accessToken: result.body.data.access_token, userid: result.body.data.user_id });
+        } catch (err) {
+            console.log(err);
+        }
+    });
 }
 
 function getJssdkConfig(req, res) {

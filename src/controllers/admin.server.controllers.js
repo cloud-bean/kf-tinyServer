@@ -12,7 +12,7 @@ const co = require('co');
 const cache = require('memory-cache');
 
 function index(req, res) {
-    res.render('./index');
+    res.send('hello world');
 }
 
 // function login(req, res) {
@@ -47,6 +47,7 @@ function getUserOpenIdByWeb(code) {
         });
     });
 }
+
 // 当接收到用户发来的消息时，判断数据库中是否有用户信息，若无，则根据openid从微信服务器获取
 function getUserInfoByOpenId(openid) {
     return new Promise((resolve, reject) => {

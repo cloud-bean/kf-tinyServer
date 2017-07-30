@@ -4,6 +4,7 @@ module.exports = {
   baseServer:{
     baseRoute:'http://120.25.227.156:7000/',
     authRoute:"oauth/wechat/token",
+    weappAuthRoute:"oauth/wepy/token",
     userRoute:"api/base/users/",
   },
   oauth:{
@@ -18,6 +19,10 @@ module.exports = {
     appid_test: 'wxf8e294c011cd47e1',
     appsecret_test: '729b99cfef8f39ec492f4fbaf3576b72',
     encodingAESKey: 'e4miuSxQNBIAFYuyi5ky0m1R79oV950ijnjKOtPSXYG',
+  },
+  weappConfig: {
+    appid: 'wx9de05118307b2e44',
+    appsecret: '034d0167fc7af96e06c76cc54aeeba62',
   },
   logic: {
     delayTime: 10000,

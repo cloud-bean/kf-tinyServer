@@ -1,5 +1,7 @@
 const wechatRoute = require('../routes/wechat.server.routes');
 const adminRoute = require('../routes/admin.server.routes');
+const weappRoute = require('../routes/weapp.server.routes');
+
 // const frontendRoute = require('../routes/frontend.server.routes');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -31,6 +33,7 @@ module.exports = () => {
 
   app.use('/wechat', wechatRoute);
   app.use('/admin', adminRoute);
+  app.use('/weapp', weappRoute);
   // app.use('/frontend', frontendRoute);
 
   return app;

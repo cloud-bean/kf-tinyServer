@@ -33,18 +33,18 @@ function index(req, res) {
 //   const user
 //
 // }
-function updateUserInfo(userid, accessToken, userInfo) {
-  request
-    .put(`${config.baseServer.baseRoute}api/base/users/${userid}`)
-    .send(userInfo)
-    .set('Authorization', `Bearer ${accessToken}`)
-    .then(result => {
-      resolve(result.data);
-    })
-    .catch(err => {
-      reject(err);
-    });
-}
+// function updateUserInfo(userid, accessToken, userInfo) {
+//   request
+//     .put(`${config.baseServer.baseRoute}api/base/users/${userid}`)
+//     .send(userInfo)
+//     .set('Authorization', `Bearer ${accessToken}`)
+//     .then(result => {
+//       resolve(result.data);
+//     })
+//     .catch(err => {
+//       reject(err);
+//     });
+// }
 
 function getUserOpenIdByWeb(code) {
     return new Promise((resolve, reject) => {
@@ -94,11 +94,12 @@ function auth(req, res) {
         try {
             const openid = yield getUserOpenIdByWeb(req.query.code);
             const user = yield getUserInfoByOpenId(openid);
+            const unionid = newuser.unionid;
             const result = yield authBaseServer(user);
             const accessToken = result.body.data.access_token;
             const userid = result.body.data.user_id;
-            yield updateUserInfo(userid, accessToken, user);
-            res.json({ accessToken, userid });
+            // yield updateUserInfo(userid, accessToken, newuser);
+            res.json({ accessToken, userid, unionid });
         } catch (err) {
             console.log(err);
         }
@@ -110,7 +111,7 @@ function authLocal(req, res) {
         try {
             const user = { openid: req.query.openid };
             const result = yield authBaseServer(user);
-            res.json({ accessToken: result.body.data.access_token, userid: result.body.data.user_id });
+            res.json({ accessToken: result.body.data.access_token, userid: result.body.data.user_id, unionid:'1232' });
         } catch (err) {
             console.log(err);
         }

@@ -94,7 +94,7 @@ function auth(req, res) {
         try {
             const openid = yield getUserOpenIdByWeb(req.query.code);
             const user = yield getUserInfoByOpenId(openid);
-            const unionid = newuser.unionid;
+            const unionid = user.unionid;
             const result = yield authBaseServer(user);
             const accessToken = result.body.data.access_token;
             const userid = result.body.data.user_id;

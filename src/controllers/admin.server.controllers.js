@@ -33,6 +33,18 @@ function index(req, res) {
 //   const user
 //
 // }
+function updateUserInfo(userid, accessToken, userInfo) {
+  request
+    .put(`${config.baseServer.baseRoute}api/base/users/${userid}`)
+    .send(userInfo)
+    .set('Authorization', `Bearer ${accessToken}`)
+    .then(result => {
+      resolve(result.data);
+    })
+    .catch(err => {
+      reject(err);
+    });
+}
 
 function getUserOpenIdByWeb(code) {
     return new Promise((resolve, reject) => {
@@ -83,7 +95,10 @@ function auth(req, res) {
             const openid = yield getUserOpenIdByWeb(req.query.code);
             const user = yield getUserInfoByOpenId(openid);
             const result = yield authBaseServer(user);
-            res.json({ accessToken: result.body.data.access_token, userid: result.body.data.user_id });
+            const accessToken = result.body.data.access_token;
+            const userid = result.body.data.user_id;
+            yield updateUserInfo(userid, accessToken, user);
+            res.json({ accessToken, userid });
         } catch (err) {
             console.log(err);
         }

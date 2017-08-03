@@ -10,10 +10,10 @@ function getUserInfo(req, res) {
   .query({ appid: config.weappConfig.appid, secret: config.weappConfig.appsecret, js_code: code, grant_type: 'authorization_code' }) // query string
   .end(function(err, result){
     unionid = JSON.parse(result.text).unionid;
-    console.log(unionid);
     authBaseServerByUnionId(unionid)
     .then((loginData)=>{
-      const data = Object.assign({},loginData.body,unionid);
+      const data = Object.assign({},loginData.body,{unionid});
+      console.log('add unionid', data);
       res.json(data);
     })
     .catch(e => {

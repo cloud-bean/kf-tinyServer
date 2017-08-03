@@ -13,8 +13,8 @@ function getUserInfo(req, res) {
     console.log(unionid);
     authBaseServerByUnionId(unionid)
     .then((loginData)=>{
-      console.log(loginData.body);
-      res.json(loginData.body);
+      const data = Object.assign({},loginData.body,unionid);
+      res.json(data);
     })
     .catch(e => {
       console.log(e);

@@ -142,6 +142,7 @@ function sendTemplate(req, res) {
     api.sendTemplate(content.openId, content.templateId, content.url, content.data, (err, result) => {
         if (err) {
             console.log(err);
+            res.send(err);
         } else {
             console.log(result);
             res.send(result);

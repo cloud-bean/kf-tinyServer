@@ -52,8 +52,13 @@ function getUserOpenIdByWeb(code) {
             if (err) {
                 console.log(err);
                 reject(err);
+            }else if(result.data){
+              console.log('result.data',result.data);
+              resolve(result.data.openid);
+            } else {
+              console.log('no result data',result);
+              reject('err');
             }
-            resolve(result.data.openid);
             // var accessToken = result.data.access_token;
             // var openid = result.data.openid;
         });

@@ -7,4 +7,7 @@ const router = express.Router();
 router.route('/getUserInfo')
     .post(weapp.getUserInfo);
 
+router.route('/template')
+    .post(weapp.sendTemplate);
+
 module.exports = router;

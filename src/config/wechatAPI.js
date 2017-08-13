@@ -2,15 +2,18 @@ const config = require('./config');
 // const fs = require('fs');
 const WechatAPI = require('wechat-api');
 const OAuth = require('wechat-oauth');
-const qiniu = require("qiniu");
+import WeappAPI from '../helper/weappAPIHelper'
+// const qiniu = require("qiniu");
 const fs = require('fs');
 
 //需要填写你的 Access Key 和 Secret Key
-qiniu.conf.ACCESS_KEY = 'yH-npgsHSAiumj2uWD4ssIPEdRta5HEsRUCLNFl2';
-qiniu.conf.SECRET_KEY = 'g-OqPh0BU3NJTV-52iJbeblrUYLPty0XIfmRuBG9';
+// qiniu.conf.ACCESS_KEY = 'yH-npgsHSAiumj2uWD4ssIPEdRta5HEsRUCLNFl2';
+// qiniu.conf.SECRET_KEY = 'g-OqPh0BU3NJTV-52iJbeblrUYLPty0XIfmRuBG9';
 
 let appid = config.wechatConfig.appid_test;
 let appsecret = config.wechatConfig.appsecret_test;
+let weappid = config.weappConfig.appid;
+let weappSecret = config.weappConfig.appsecret;
 
 if (process.env.NODE_ENV === 'production') {
   appid = config.wechatConfig.appid;
@@ -19,6 +22,9 @@ if (process.env.NODE_ENV === 'production') {
 
 const webapi = new OAuth(appid, appsecret);
 const api = new WechatAPI(appid, appsecret);
+const weappApi = new WeappAPI(weappid, weappSecret);
+
+
 // const api = new WechatAPI(appid, appsecret, function (callback) {
 //   // 传入一个获取全局token的方法
 //   console.log('read!!');
@@ -36,5 +42,5 @@ const api = new WechatAPI(appid, appsecret);
 module.exports = {
   api,
   webapi,
-  qiniu
+  weappApi
 };

@@ -1,6 +1,6 @@
 const request = require('superagent');
 const config = require('../config/config');
-const weappApi = require('../config/wechatAPI').weappApi;
+// const weappApi = require('../config/wechatAPI').weappApi;
 
 function getUserInfo(req, res) {
   const data = req.body;
@@ -47,22 +47,22 @@ function authBaseServerByUnionId(unionid) {
 }
 
 function sendTemplate(req, res) {
-    var content = req.body;
-    console.log('templete content', content);
-    weappApi
-    .sendTemplate(content.openId, content.templateId, content.url, content.formId, content.data)
-    .then((data)=>{
-      res.send(data);
-    })
-    .error((err)=>{
-      res.send(err);
-    })
+    // var content = req.body;
+    // console.log('templete content', content);
+    // weappApi
+    // .sendTemplate(content.openId, content.templateId, content.url, content.formId, content.data)
+    // .then((data)=>{
+    //   res.send(data);
+    // })
+    // .error((err)=>{
+    //   res.send(err);
+    // })
 }
 
 
 module.exports = {
     // login,
-    getUserInfo,
-    sendTemplate
+    getUserInfo
+    // sendTemplate
 
 };

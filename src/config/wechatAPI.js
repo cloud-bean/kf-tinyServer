@@ -2,7 +2,7 @@ const config = require('./config');
 // const fs = require('fs');
 const WechatAPI = require('wechat-api');
 const OAuth = require('wechat-oauth');
-import WeappAPI from '../helper/weappAPIHelper'
+const WeappAPI = require('../helper/weappAPIHelper');
 // const qiniu = require("qiniu");
 const fs = require('fs');
 
@@ -22,7 +22,7 @@ if (process.env.NODE_ENV === 'production') {
 
 const webapi = new OAuth(appid, appsecret);
 const api = new WechatAPI(appid, appsecret);
-const weappApi = new WeappAPI(weappid, weappSecret);
+// const weappApi = WeappAPI.newWeappAPI(weappid, weappSecret);
 
 
 // const api = new WechatAPI(appid, appsecret, function (callback) {
@@ -41,6 +41,5 @@ const weappApi = new WeappAPI(weappid, weappSecret);
 
 module.exports = {
   api,
-  webapi,
-  weappApi
+  webapi
 };

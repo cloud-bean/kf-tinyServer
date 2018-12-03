@@ -1,13 +1,13 @@
 const request = require('superagent');
 const webapi = require('../config/wechatAPI').webapi;
 
-export default class WeappAPI {
-  constructor(appid, appSecret) {
+module.exports = {
+  newWeappAPI(appid, appSecret) {
     this.appid = appid;
     this.appSecret = appSecret;
     this.accessToken = '';
-    that.expireTime = '';
-  }
+    this.expireTime = '';
+  },
   getAccessToken(){
     const that = this;
     const url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&'+`appid=${this.appid}&secret=${this.this.appSecret}`;
@@ -21,17 +21,17 @@ export default class WeappAPI {
     .catch((err) => {
       console.log();
     });
-  }
+  },
   isAccessTokenValid(){
     return !!this.accessToken && (new Date().getTime()) < this.expireTime;
-  }
+  },
   preRequest(){
     if(!this.isAccessTokenValid()){
       return this.getAccessToken();
     } else {
       return;
     }
-  }
+  },
   sendTemplate(toUser, templeteId, page, formId, templeteData){
     const that = this;
       return this.preRequest()
@@ -55,5 +55,4 @@ export default class WeappAPI {
         });
       });
   }
-
 }

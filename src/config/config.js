@@ -20,20 +20,17 @@ module.exports = {
     appsecret_test: '729b99cfef8f39ec492f4fbaf3576b72',
     encodingAESKey: 'e4miuSxQNBIAFYuyi5ky0m1R79oV950ijnjKOtPSXYG',
   },
-  weappConfig: [
-    {
-      name: 'joyBox',
+  weappConfig: {
+    joyBox: {
       appid: 'wx9de05118307b2e44',
       appsecret: '034d0167fc7af96e06c76cc54aeeba62',
     },
-    {
-      name: 'joyTeacher',
+    joyTeacher: {
       appid: 'wx6580d634dd0be91f',
       appsecret: 'e534017964bbf60f4bf4975bc0589038',
     }
-  ],
+  },
   logic: {
     delayTime: 10000,
   },
 };
-// db: 'mongodb://lightclass:lightclass@120.25.227.156:29017/lightclass',

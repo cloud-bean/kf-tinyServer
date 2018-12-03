@@ -1,5 +1,5 @@
 module.exports = {
-  port: process.env.KEEP_PORT || 3000,
+  port: process.env.KEEP_PORT || 5555,
   // db: process.env.KEEP_DB_URI || 'mongodb://localhost/keepreading',
   baseServer:{
     baseRoute:'http://120.25.227.156:7000/',

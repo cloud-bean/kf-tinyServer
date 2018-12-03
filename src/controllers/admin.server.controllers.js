@@ -9,7 +9,6 @@ const api = require('../config/wechatAPI').api;
 // const fs = require('fs');
 const co = require('co');
 // const userHelper = require('../helper/userHelper.server');
-const cache = require('memory-cache');
 
 function index(req, res) {
     res.send('hello world');

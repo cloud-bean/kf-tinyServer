@@ -6,16 +6,17 @@ function getUserInfo(req, res) {
   const data = req.body;
   const code = data.code;
   const appName = data.appName;
-  const { appid, appsecret } = config.weappConfig[appName];
-  console.log('appName, appid, secret', appName, appid, appsecret)
+  const { appid, secret } = config.weappConfig[appName];
+  console.log('appName, appid, secret', appName, appid, secret)
   request
   .get('https://api.weixin.qq.com/sns/jscode2session')
-  .query({ appid, appsecret, js_code: code, grant_type: 'authorization_code' }) // query string
+  .query({ appid, secret, js_code: code, grant_type: 'authorization_code' }) // query string
   .end(function(err, result){
-    const unionid = JSON.parse(result.text).unionid;
-    const openid = JSON.parse(result.text).openid;
-
-    authBaseServerByUnionId(unionid)
+	  console.log(err, result.text);
+	  const unionid = JSON.parse(result.text).unionid;
+	  const openid = JSON.parse(result.text).openid;
+	  
+	  authBaseServerByUnionId(unionid)
     .then((loginData)=>{
       const data = Object.assign({},loginData.body,{unionid},{openid});
       res.json(data);

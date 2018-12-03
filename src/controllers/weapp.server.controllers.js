@@ -5,8 +5,9 @@ const weappApi = require('../config/wechatAPI').weappApi;
 function getUserInfo(req, res) {
   const data = req.body;
   const code = data.code;
-  const appid = data.appId;
-  const secret = config.weappConfig.find(item => item.appid==appid).appsecret;
+  const appName = data.appName;
+  const { appid, secret } = config.weappConfig[appName];
+  console.log('appName, appid, secret', appName, appid, secret)
   request
   .get('https://api.weixin.qq.com/sns/jscode2session')
   .query({ appid, secret, js_code: code, grant_type: 'authorization_code' }) // query string

@@ -32,28 +32,28 @@ export default class WeappAPI {
       return;
     }
   }
-  sendTemplate(toUser, templeteId, page, formId, templeteData){
-    const that = this;
-      return this.preRequest()
-      .then(()=>{
-        const url = `https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token=${that.accessToken}`;
-        const sendData = {
-          touser: toUser,
-          template_id: templeteId,
-          page: page,
-          form_id: formId,
-          data: templeteData,
-        }
-        request
-        .post(url)
-        .send(sendData)
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-      });
-  }
+  // sendTemplate(toUser, templeteId, page, formId, templeteData){
+  //   const that = this;
+  //     return this.preRequest()
+  //     .then(()=>{
+  //       const url = `https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token=${that.accessToken}`;
+  //       const sendData = {
+  //         touser: toUser,
+  //         template_id: templeteId,
+  //         page: page,
+  //         form_id: formId,
+  //         data: templeteData,
+  //       }
+  //       request
+  //       .post(url)
+  //       .send(sendData)
+  //       .then((res) => {
+  //         console.log(res);
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //     });
+  // }
 
 }

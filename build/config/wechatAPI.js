@@ -1,9 +1,8 @@
-// import weappAPI from '../helper/weappAPIHelper'
-
 const config = require('./config');
 // const fs = require('fs');
 const WechatAPI = require('wechat-api');
 const OAuth = require('wechat-oauth');
+import WeappAPI from '../helper/weappAPIHelper';
 // const qiniu = require("qiniu");
 const fs = require('fs');
 
@@ -13,8 +12,8 @@ const fs = require('fs');
 
 let appid = config.wechatConfig.appid_test;
 let appsecret = config.wechatConfig.appsecret_test;
-// let weappid = config.weappConfig.appid;
-// let weappSecret = config.weappConfig.appsecret;
+let weappid = config.weappConfig.appid;
+let weappSecret = config.weappConfig.appsecret;
 
 if (process.env.NODE_ENV === 'production') {
   appid = config.wechatConfig.appid;
@@ -23,8 +22,7 @@ if (process.env.NODE_ENV === 'production') {
 
 const webapi = new OAuth(appid, appsecret);
 const api = new WechatAPI(appid, appsecret);
-// const weappApi = new WeappAPI(weappid, weappSecret);
-
+const weappApi = new WeappAPI(weappid, weappSecret);
 
 // const api = new WechatAPI(appid, appsecret, function (callback) {
 //   // 传入一个获取全局token的方法
@@ -43,5 +41,6 @@ const api = new WechatAPI(appid, appsecret);
 module.exports = {
   api,
   webapi,
-  // weappApi
+  weappApi
 };
+//# sourceMappingURL=wechatAPI.js.map

@@ -22,12 +22,12 @@ module.exports = {
   },
   weappConfig: {
     joyBox: {
-      appid: 'wx9de05118307b2e44',
-      secret: '034d0167fc7af96e06c76cc54aeeba62'
+      appid: 'wx33e50555f1202083', // update at 2019-10-22
+      secret: '3aeb57e9e4375fc65e618dadbe751f98'
     },
     joyTeacher: {
-      appid: 'wx6580d634dd0be91f',
-      secret: 'e534017964bbf60f4bf4975bc0589038'
+      appid: '',
+      secret: ''
     }
   },
   logic: {
